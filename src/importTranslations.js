@@ -32,11 +32,11 @@ const createTranslation = (api, applicationId, languageId, key, value) => {
 
 module.exports = event => {
   // Retrieve payload from event
-  const { fileJSON, applicationId, languageId } = event.data;
+  const { fileContents, applicationId, languageId } = event.data;
   const graphcool = fromEvent(event);
   const api = graphcool.api('simple/v1');
 
-  const translations = JSON.parse(fileJSON);
+  const translations = JSON.parse(fileContents);
   const flattenedTranslations = flatten(translations);
 
   const promises = [];
