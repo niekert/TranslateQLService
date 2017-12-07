@@ -1,0 +1,72 @@
+types: ./types.graphql
+functions:
+  # This resolver allows to create a new user with the
+  # `signupUser`-mutation defined in `signup.graphql`.
+  signup:
+    type: resolver
+    schema: src/signup.graphql
+    handler:
+      code:
+        src: src/signup.js
+
+  # This resolver allows to retrieve a node token using the
+  # `authenticateUser`-mutation defined in `authenticate.graphql`.
+  authenticate:
+    type: resolver
+    schema: src/authenticate.graphql
+    handler:
+      code: src/authenticate.js
+
+  # This resolver allows to check whether a request belongs to a
+  # currently authenticated `User` node using the
+  # `loggedInUser` query defined in `loggedInUser.graphql`.
+  loggedInUser:
+    type: resolver
+    schema: src/loggedInUser.graphql
+    handler:
+      code:
+        src: src/loggedInUser.js
+
+  testQuery:
+    type: resolver
+    schema: src/test.graphql
+    handler:
+      code:
+        src: src/test.js
+
+permissions:
+- operation: Application.read
+- operation: Application.create
+- operation: Application.update
+- operation: Application.delete
+- operation: File.read
+- operation: File.create
+- operation: File.update
+- operation: File.delete
+- operation: Language.read
+- operation: Language.create
+- operation: Language.update
+- operation: Language.delete
+- operation: Translation.read
+- operation: Translation.create
+- operation: Translation.update
+- operation: Translation.delete
+- operation: TranslationValue.read
+- operation: TranslationValue.create
+- operation: TranslationValue.update
+- operation: TranslationValue.delete
+- operation: User.read
+- operation: User.create
+- operation: User.update
+- operation: User.delete
+- operation: ApplicationLanguages.*
+- operation: AppTranslations.*
+- operation: TranslationLanguage.*
+- operation: TranslationValues.*
+- operation: UserApplications.*
+
+rootTokens:
+  - signup
+  - authenticate
+  - loggedInUser
+

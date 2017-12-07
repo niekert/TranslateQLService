@@ -1,0 +1,49 @@
+type File @model {
+  contentType: String!
+  createdAt: DateTime!
+  id: ID! @isUnique
+  name: String!
+  secret: String! @isUnique
+  size: Int!
+  updatedAt: DateTime!
+  url: String! @isUnique
+}
+
+type User @model {
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  id: ID! @isUnique
+  email: String! @isUnique
+  password: String!
+  applications: [Application!]! @relation(name: "UserApplications")
+}
+
+type Application @model {
+  id: ID! @isUnique
+  name: String!
+  languages: [Language!]! @relation(name: "ApplicationLanguages")
+  user: User! @relation(name: "UserApplications")
+  translations: [Translation!]! @relation(name: "AppTranslations")
+}
+
+type Language @model {
+  id: ID! @isUnique
+  code: String!
+  name: String!
+  applications: [Application!]! @relation(name: "ApplicationLanguages")
+  translations: [TranslationValue!]! @relation(name: "TranslationLanguage")
+}
+
+type Translation @model {
+  id: ID! @isUnique
+  application: Application! @relation(name: "AppTranslations")
+  values: [TranslationValue!]! @relation(name: "TranslationValues")
+  key: String! @isUnique
+}
+
+type TranslationValue @model {
+  id: ID! @isUnique
+  translation: Translation! @relation(name: "TranslationValues")
+  language: Language! @relation(name: "TranslationLanguage")
+  value: String!
+}
