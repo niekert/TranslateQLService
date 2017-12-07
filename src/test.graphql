@@ -1,7 +1,0 @@
-type TestPayload {
-  test: String!
-}
-
-extend type Query {
-  testQuery: TestPayload!
-}

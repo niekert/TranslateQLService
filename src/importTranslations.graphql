@@ -1,0 +1,3 @@
+extend type Mutation {
+  importTranslations(fileContents: String!, applicationId: ID!): Translation!
+}

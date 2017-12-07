@@ -4,6 +4,7 @@
   "description": "My Graphcool Service",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "flat": "^4.0.0",
     "graphcool-lib": "^0.1.4",
     "validator": "^9.1.2"
   }

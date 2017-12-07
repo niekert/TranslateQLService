@@ -27,12 +27,12 @@ functions:
       code:
         src: src/loggedInUser.js
 
-  testQuery:
+  importTranslations:
     type: resolver
-    schema: src/test.graphql
+    schema: src/importTranslations.graphql
     handler:
       code:
-        src: src/test.js
+        src: src/importTranslations.js
 
 permissions:
 - operation: Application.read
